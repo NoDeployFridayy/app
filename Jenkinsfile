@@ -10,7 +10,8 @@ pipeline {
 
         stage('Install and validate') {
             steps {
-                dir('demo-app') {
+                dir('app') {
+                    sh 'source ~/agent/.venv/bin/activate'
                     sh 'python3 -m pip install -r requirements.txt'
                     sh 'python3 -m compileall -q app.py'
                 }
