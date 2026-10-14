@@ -11,8 +11,8 @@ pipeline {
         stage('Install and validate') {
             steps {
                 dir('demo-app') {
-                    sh 'python -m pip install -r requirements.txt'
-                    sh 'python -m compileall -q app.py'
+                    sh 'python3 -m pip install -r requirements.txt'
+                    sh 'python3 -m compileall -q app.py'
                 }
             }
         }
