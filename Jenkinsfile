@@ -11,7 +11,7 @@ pipeline {
         stage('Install and validate') {
             steps {
                 dir('app') {
-                    sh 'source ~/agent/.venv/bin/activate'
+                    sh '. /var/jenkins_home/agent/.venv/bin/activate'
                     sh 'python3 -m pip install -r requirements.txt'
                     sh 'python3 -m compileall -q app.py'
                 }
@@ -20,7 +20,7 @@ pipeline {
 
         stage('Build Docker image') {
             steps {
-                dir('demo-app') {
+                dir('app') {
                     sh 'docker build -t my-app:latest .'
                 }
             }
